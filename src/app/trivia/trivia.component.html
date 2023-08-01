@@ -1,1 +1,5 @@
-<p>trivia works!</p>
+<div>
+    <h1>SUPERMEGATRIVIAL SONIÁSTICO</h1>
+    <button (click)="startGame()">EMPEZAR</button>
+    <app-question *ngIf="showQuestion" [question]="currentQuestion"></app-question>
+</div>

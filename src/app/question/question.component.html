@@ -1,1 +1,8 @@
-<p>question works!</p>
+<div>
+  <h2>{{ question.question }}</h2>
+  <ul>
+    <li *ngFor="let option of question.options">
+      <button (click)="checkAnswer(option)">{{ option }}</button>
+    </li>
+  </ul>
+</div>
