@@ -1,5 +1,30 @@
-<div>
-    <h1>SUPERMEGATRIVIAL SONIÁSTICO</h1>
-    <button (click)="startGame()">EMPEZAR</button>
-    <app-question *ngIf="showQuestion" [question]="currentQuestion"></app-question>
-</div>
+<div class="container">
+    <div class="title-container">
+      <div class="lalita-images">
+        <img src="assets/lalapic.png" alt="lalita" class="fade-in">
+        <h1>SUPERMEGATRIVIAL SONIÁSTICO</h1>
+        <img src="assets/lalapic.png" alt="lalita" class="fade-in">
+      </div>
+    </div>
+    <button (click)="startGame()" class="fade-in">EMPEZAR</button>
+  
+    <div *ngIf="showQuestion" class="question-container fade-in">
+      <h2>Category: {{ currentCategory }}</h2>
+      <h3>Current Team: {{ currentTeam }}</h3>
+      <app-question
+        [question]="currentQuestion"
+        [category]="currentCategory"
+        [currentTeam]="currentTeam"
+        (answer)="submitAnswer($event)"
+        class="fade-in"
+      ></app-question>
+    </div>
+  
+    <div class="score-container fade-in">
+      <h2>Team Scores</h2>
+      <div class="team-score" *ngFor="let team of teamNames">
+        {{ team }}: {{ teams[team] }} points
+      </div>
+    </div>
+  </div>
+  

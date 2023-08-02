@@ -1,8 +1,23 @@
-<div>
-  <h2>{{ question.question }}</h2>
+<div class="question fade-in">
+  <p>{{ question.question }}</p>
   <ul>
     <li *ngFor="let option of question.options">
-      <button (click)="checkAnswer(option)">{{ option }}</button>
+      <label>
+        <input type="radio" name="answer" (change)="selectAnswer(option)">
+        {{ option }}
+      </label>
     </li>
   </ul>
+  <button (click)="submitAnswer()">{{ category }}</button>
+</div>
+<div class="illustration fade-in">
+  <div class="encanto" *ngIf="category === 'encanto'">
+    <img src="assets/mirabelpic.png" alt="">
+  </div>
+  <div class="media" *ngIf="category === 'media'">
+    <img src="assets/nerdpic.png" alt="">
+  </div>
+  <div class="personal" *ngIf="category === 'personal'">
+    <img src="assets/lalapic.png" alt="">
+  </div>
 </div>
