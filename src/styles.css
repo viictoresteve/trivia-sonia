@@ -3,8 +3,11 @@ body {
     margin: 0;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #2b2d42;
-    color: #ffffff;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
   }
   
   /* Styles for the main container */
@@ -13,19 +16,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Set container height to fill the viewport */
+    flex-grow: 1; /* Take up remaining space */
   }
-  
-  /* Rest of the styles remain the same as previous example */
-  
-  /* Media query for smaller screens */
-  @media screen and (max-width: 768px) {
-    .illustration {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  
   
   /* Styles for the title and Lalita images */
   .title-container {
@@ -46,18 +38,44 @@ body {
     align-items: center;
     justify-content: center;
     max-width: 80px;
+    margin: 0 1rem;
   }
   
   .lalita-images img {
     max-width: 100%;
     height: auto;
-    margin: 0 1rem;
     transform: rotateY(0);
     transition: transform 0.8s ease-in-out;
   }
   
   .lalita-images img:hover {
     transform: rotateY(180deg);
+  }
+
+
+/* Styles for the category header */
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .category-images {
+    display: flex;
+    align-items: center;
+  }
+  
+  .category-icon {
+    max-width: 50px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  
+  .category-image {
+    max-width: 30px; /* Adjust the size as needed */
+    height: auto;
+    margin: 0 0.25rem; /* Add spacing between images */
   }
   
   /* Styles for the start button */
@@ -85,76 +103,49 @@ body {
     margin-top: 2rem;
   }
   
-  /* Styles for the question text */
-  .question p {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-  }
+  /* Rest of the styles remain the same as previous example */
   
-  /* Styles for the answer options */
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .illustration {
+      flex-direction: column;
+      align-items: center;
+    }
   }
-  
-  li {
-    margin: 0.5rem 0;
-  }
-  
-  /* Styles for the answer radio buttons */
-  input[type="radio"] {
-    margin-right: 0.5rem;
-  }
-  
-  /* Styles for the submit button */
-  .question button {
-    background-color: #00aaff;
-    color: #ffffff;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .question button:hover {
-    background-color: #0077cc;
-  }
-  
-  /* Styles for the illustration container */
-  .illustration {
+  /* Rest of the styles remain the same as before */
+
+/* Styles for the score container */
+.score-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-    max-width: 600px;
-    margin: 0 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
   }
   
-  /* Styles for the illustration images */
-  .illustration img {
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.5s ease-in-out;
+  /* Styles for individual team scores */
+  .team-score {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
   
-  .illustration img:hover {
-    transform: scale(1.05);
+  /* Styles for active team's score */
+  .active-team {
+    font-weight: bold;
+    color: #ff4500; /* Change to the active team's color */
   }
   
-  /* Animation for fading in */
-  @keyframes fadeIn {
+  /* Animation for sliding in */
+  @keyframes slideInUp {
     from {
+      transform: translateY(100%);
       opacity: 0;
     }
     to {
+      transform: translateY(0);
       opacity: 1;
     }
-  }
-  
-  .fade-in {
-    animation: fadeIn 1s ease-in-out;
   }
   
