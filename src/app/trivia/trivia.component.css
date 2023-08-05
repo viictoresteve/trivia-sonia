@@ -8,7 +8,10 @@
     width: 100vw; /* Full width of the viewport */
     animation: fadeIn 1s;
   }
-  
+  .content-wrapper {
+    display: flex;
+    width: 100%;
+  }
   
   /* Styles for the current category heading */
   .current-category {
@@ -76,8 +79,8 @@
   
   .question-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
     text-align: center;
     margin-top: 40px;
     animation: slideIn 1s;
@@ -85,19 +88,21 @@
   
   .category-header {
     margin-bottom: 20px;
+    flex:1;
   }
   
   .category-images {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1;
   }
   
   .category-image {
-    max-width: 10%;
+    max-width:fit-content;
     height: auto;
     margin: 0 20px;
-    animation: rotate 5s linear infinite;
+    /* animation: rotate 5s linear infinite; */
   }
   .category-image.inverted {
     transform: scaleX(-1);

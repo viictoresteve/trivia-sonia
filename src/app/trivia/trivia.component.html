@@ -1,34 +1,50 @@
-<div class="container" [ngClass]="{'playing-game': showQuestion}">
+<div class="container" [ngClass]="{ 'playing-game': showQuestion }">
   <div class="title-container" *ngIf="!showQuestion">
     <div class="disney-title">
-      <img src="assets/lalapic.png" alt="lalita" class="fade-in disney-image">
+      <img src="assets/lalapic.png" alt="lalita" class="fade-in disney-image" />
       <h1>SUPERMEGATRIVIAL</h1>
       <h1 class="disney-subtitle">SONIÁSTICO</h1>
-      <img src="assets/lalapic.png" style="transform: scaleX(-1);" alt="lalita" class="fade-in disney-image">
+      <img
+        src="assets/lalapic.png"
+        style="transform: scaleX(-1)"
+        alt="lalita"
+        class="fade-in disney-image"
+      />
     </div>
   </div>
-  <button (click)="startGame()" class="fade-in" *ngIf="!showQuestion">EMPEZAR</button>
-
+  <button (click)="startGame()" class="fade-in" *ngIf="!showQuestion">
+    EMPEZAR
+  </button>
 
   <div *ngIf="showQuestion" class="question-container fade-in">
-    <div class="category-header">
-      <div class="category-images">
-        <img [src]="getCategoryImage(currentCategory!)" alt="Category Image" class="category-image">
-        <h4 class="current-category-disney">{{ currentCategory }}</h4>
-        <img [src]="getCategoryImage(currentCategory!)" alt="Category Image" class="category-image inverted">
+    <div class="content-wrapper">
+      <div class="category-header">
+        <h3 class="current-team">JUGANT: {{ currentTeam }}</h3>
+        <div class="category-images">
+          <img
+            [src]="getCategoryImage(currentCategory!)"
+            alt="Category Image"
+            class="category-image"
+          />
+          <!-- <h4 class="current-category-disney">{{ currentCategory }}</h4> -->
+          <!-- <img
+            [src]="getCategoryImage(currentCategory!)"
+            alt="Category Image"
+            class="category-image inverted"
+          /> -->
+        </div>
       </div>
+      <app-question
+        [question]="currentQuestion"
+        [category]="currentCategory"
+        [currentTeam]="currentTeam"
+        (answer)="handleAnswer($event)"
+        class="fade-in"
+      ></app-question>
     </div>
-    <h3 class="current-team">Current Team: {{ currentTeam }}</h3>
-    <app-question
-      [question]="currentQuestion"
-      [category]="currentCategory"
-      [currentTeam]="currentTeam"
-      (answer)="handleAnswer($event)"
-      class="fade-in"
-    ></app-question>
   </div>
-  
-    <!-- <div class="score-container fade-in">
+
+  <!-- <div class="score-container fade-in">
       <h2>Team Scores</h2>
       <div class="team-score" *ngFor="let team of teamNames">
         {{ team }}: {{ teams[team] }} points
@@ -42,6 +58,4 @@
       <button class="popup-close-button" (click)="closePopup()">CLOSE</button>
     </div>
   </div>
-  
-  
 </div>
